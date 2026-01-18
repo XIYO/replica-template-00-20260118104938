@@ -11,16 +11,13 @@ export default defineConfig({
 	site: siteUrl,
 	output: 'static',
 	adapter: cloudflare(),
-	prefetch: {
-		prefetchAll: true,
-		defaultStrategy: 'hover',
-	},
-	experimental: {
-		clientPrerender: true,
-	},
 	integrations: [
 		starlight({
 			title: siteConfig.title,
+			defaultLocale: 'root',
+			locales: {
+				root: { label: '한국어', lang: 'ko-KR' }
+			},
 			customCss: ['./src/styles/custom.css'],
 			social: [
 				{
@@ -30,9 +27,8 @@ export default defineConfig({
 				},
 			],
 			sidebar: [
-				{ label: '개요', autogenerate: { directory: 'overview' } },
-				{ label: '핵심 기술', autogenerate: { directory: 'core-technologies' } },
-				{ label: '미래 전망', autogenerate: { directory: 'future-outlook' } },
+				{ label: '기초 및 핵심 원칙', autogenerate: { directory: 'foundations' } },
+				{ label: '심화 프롬프트 전략', autogenerate: { directory: 'advanced-techniques' } },
 			],
 		}),
 	],
